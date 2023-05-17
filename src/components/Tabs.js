@@ -1,50 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class Tabs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: 0 // Initialize the active tab as the first tab
-    };
-  }
+const Tabs = ({ tabs }) => {
+  const [activeTab, setActiveTab] = useState(0);
 
-  handleTabClick = (index) => {
-    this.setState({ activeTab: index });
+  const handleTabClick = (index) => {
+    setActiveTab(index);
   };
 
-  render() {
-    const { tabs } = this.props;
-    const { activeTab } = this.state;
-
-    return (
-<>
-<ul>
-    <li>
-      <div>
-        
-        <div className="tab-list">
-          {tabs.map((tab, index) => (
-            <div
-              key={index}
-              className={`tab ${index === activeTab ? 'active' : ''}`}
-              onClick={() => this.handleTabClick(index)}
+  return (
+    <div>
+      <ul>
+        {tabs.map((tab, index) => (
+          <li key={index}>
+            <button
+              onClick={() => handleTabClick(index)}
+              className={index === activeTab ? 'active' : ''}
             >
               {tab.title}
-             
-            </div>
-          ))}
-           
-        </div>
-        <div className="tab-content">
-          {tabs[activeTab].content}
-        </div>
-        
-      </div>
-      </li>
+            </button>
+          </li>
+        ))}
       </ul>
-      </>
-    );
-  }
-}
+      <div>{tabs[activeTab].content}</div>
+    </div>
+  );
+};
 
 export default Tabs;
