@@ -17,6 +17,9 @@ class Tabs extends React.Component {
     const { activeTab } = this.state;
 
     return (
+<>
+<ul>
+    <li>
       <div>
         
         <div className="tab-list">
@@ -37,6 +40,9 @@ class Tabs extends React.Component {
         </div>
         
       </div>
+      </li>
+      </ul>
+      </>
     );
   }
 }
