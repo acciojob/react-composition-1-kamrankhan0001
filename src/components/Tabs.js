@@ -12,12 +12,12 @@ const Tabs = ({ tabs }) => {
       <ul>
         {tabs.map((tab, index) => (
           <li key={index}>
-            <button
+            <div
               onClick={() => handleTabClick(index)}
               className={index === activeTab ? 'active' : ''}
             >
               {tab.title}
-            </button>
+            </div>
           </li>
         ))}
       </ul>
